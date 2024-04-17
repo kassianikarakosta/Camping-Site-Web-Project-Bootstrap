@@ -1,0 +1,56 @@
+/* :root 
+{
+	font-size: 15px;
+    background-color: #FFEDEC;
+}
+
+.nav-bar {
+    background-color: #FF6D60;
+    text-align: center;
+    height: 3em;
+    line-height: 3em; 
+    
+}
+
+.nav-bar a:hover 
+{
+    background-color: #FFA49C;
+}
+
+.nav-bar a.active 
+{
+    background-color: #FFA49C;
+}
+
+
+.nav-bar a
+{   background-color: #FF6D60;
+    color: white;
+    text-decoration: none;
+} */
+
+:root {
+    font-size: 15px;
+    background-color: #FFEDEC;
+}
+
+.nav-bar {
+    background-color: #FF6D60;
+    text-align: center;
+    height: 3em;
+    line-height: 3em; 
+}
+
+.nav-bar a:hover {
+    background-color: #FFA49C;
+}
+
+.nav-bar a.active {
+    background-color: #FFA49C;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+
