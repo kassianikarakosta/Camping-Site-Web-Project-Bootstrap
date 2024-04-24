@@ -1,0 +1,18 @@
+.navbar-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.custom-navbar-color {
+    background-color: #D4462E;
+}
+
+/* .navbar-nav .nav-link.active {
+    color: white;
+} */
+.nav-link.active {
+    color: white;
+}
+

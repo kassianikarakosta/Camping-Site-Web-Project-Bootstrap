@@ -1,6 +1,23 @@
-#home-starter{
-    height: 300px;
-    background-image: url("beach-camping-in-australia.jpg");
-    background-size: cover;
-    
+.carousel-container {
+    width: 70%;
+    margin: 2em auto; /* Center the images */
+    border: 0.5em solid white;
+    overflow: hidden;
+}
+
+h1{
+    color:rgb(29, 27, 27);
+    text-align: center;
+    margin: 0.5em;
+}
+
+hr 
+{
+	width: 50%;
+	height: 0.05em;
+	background-color: rgba(29, 27, 27, 0.49); 
+	margin: 0 auto; 
+	border: none;
+    margin-top: 1em;
+	
 }
