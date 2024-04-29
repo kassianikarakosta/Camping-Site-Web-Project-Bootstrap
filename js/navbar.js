@@ -11,7 +11,7 @@ function isActive(url) {
 document.addEventListener("DOMContentLoaded", function() {
     const navbar = `
       <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
-        <a class="navbar-brand">Camping</a>
+        <a class="navbar-brand">Patras Camping</a>
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
