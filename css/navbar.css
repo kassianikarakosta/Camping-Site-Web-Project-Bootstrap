@@ -1,18 +1,27 @@
-.navbar-sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.custom-navbar-color {
-    background-color: #D4462E;
-}
-
 /* .navbar-nav .nav-link.active {
     color: white;
 } */
 .nav-link.active {
     color: white;
+}
+
+.custom-navbar-color,
+.dropdown-menu {
+    background-color: #D4462E; /* Set the background color */
+}
+
+.custom-navbar-color .navbar-nav .nav-link.active,
+.dropdown-menu .dropdown-item.active {
+    color: white; /* Set the text color for active links */
+}
+
+.custom-navbar-color .navbar-nav .nav-link,
+.dropdown-menu .dropdown-item {
+    color: rgb(248, 219, 219); /* Set the default text color */
+}
+
+.dropdown-item:hover {
+    /* color: #D4462E; */
+    background-color: #ff6347;
 }
 
