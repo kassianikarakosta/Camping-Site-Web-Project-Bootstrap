@@ -5,11 +5,11 @@
     overflow: hidden;
 }
 
-h1{
+/* h1{
     color:rgb(29, 27, 27);
     text-align: center;
     margin: 0.5em;
-}
+} */
 
 hr 
 {
@@ -20,4 +20,45 @@ hr
 	border: none;
     margin-top: 1em;
 	
+}
+
+p
+{
+    font-size: 2em;
+    color:rgb(29, 27, 27);
+    text-align: center;
+    margin: 0.5em;
+}
+
+.section-title {
+    color: #004080;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-content {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.camping-options {
+    margin-top: 40px;
+}
+
+.camping-option {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Add this line to set white background */
+}
+
+.camping-option h3 {
+    color: #004080;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }
