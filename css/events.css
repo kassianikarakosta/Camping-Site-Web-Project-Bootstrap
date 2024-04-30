@@ -1,0 +1,16 @@
+.section-title {
+    color: #004080;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card
+{
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Add this line to set white background */
+}
