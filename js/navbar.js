@@ -1,15 +1,3 @@
-// Function to determine if a link should be active based on the current URL
-function isActive(url) {
-  // Check if the current URL exactly matches the specified URL
-  if (window.location.pathname === url) {
-      return 'active';
-  } else {
-      return '';
-  }
-}
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
   const navbar = `
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
@@ -19,21 +7,21 @@ document.addEventListener("DOMContentLoaded", function() {
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto"">
         <li class="nav-item">
-          <a class="nav-link ${isActive('/home')}" href="../html/home.html">Home</a>
+          <a class="nav-link" href="../html/home.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${isActive('/accomondation')}" href="../html/accomondation.html">Accommodation</a>
+          <a class="nav-link" href="../html/accomondation.html">Accommodation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${isActive('/services')}" href="../html/services.html">Services</a>
+          <a class="nav-link" href="../html/services.html">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${isActive('/events')}" href="../html/events.html">Events</a>
+          <a class="nav-link" href="../html/events.html">Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${isActive('/contact')}" href="../html/contact.html">Contact</a>
+          <a class="nav-link" href="../html/contact.html">Contact</a>
         </li>
       </ul>
       
@@ -43,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
             User
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item ${isActive('/signin')}" href="../html/signin.html">Sign In</a>
-            <a class="dropdown-item ${isActive('/signup')}" href="../html/signup.html">Sign Up</a>
-            <a class="dropdown-item ${isActive('/profile')}" href="../html/profile.html">Profile</a>
+            <a class="dropdown-item" href="../html/signin.html">Sign In</a>
+            <a class="dropdown-item" href="../html/signup.html">Sign Up</a>
+            <a class="dropdown-item" href="../html/profile.html">Profile</a>
           </div>
         </li>
       </ul>
@@ -75,5 +63,43 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('.navbar-toggler').addEventListener('click', function() {
       // Toggle the 'show' class on the navbar collapse element
       navbarCollapse.classList.toggle('show');
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the current page URL
+  const currentPageUrl = window.location.href;
+
+  // Get all navigation links
+  const navLinks = document.querySelectorAll('.nav-item a');
+  // const dropdownlinks = document.querySelectorAll('.dropdown a');
+
+  // Loop through each navigation link
+  navLinks.forEach(function(link) {
+    // Check if the link's href matches the current page URL
+    if (link.href === currentPageUrl) {
+      // Add the "active" class to the parent li element
+      link.parentNode.classList.add('active');
+    }
+  });
+
+  // dropdownlinks.forEach(function(link) {
+  //   // Check if the link's href matches the current page URL
+  //   if (link.href === currentPageUrl) {
+  //     // Add the "active" class to the parent li element
+  //     link.parentNode.classList.add('active');
+  //   }
+  // });
+
+  // Your existing code for the navbar and footer insertion...
+
+  // Get reference to the navbar collapse element
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+
+  // Add event listener to the navbar toggler button
+  document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    // Toggle the 'show' class on the navbar collapse element
+    navbarCollapse.classList.toggle('show');
   });
 });
