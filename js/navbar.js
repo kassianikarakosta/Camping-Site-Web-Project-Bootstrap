@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <a class="dropdown-item" href="../html/signin.html">Sign In</a>
             <a class="dropdown-item" href="../html/signup.html">Sign Up</a>
             <a class="dropdown-item" href="../html/profile.html">Profile</a>
+            <a class="dropdown-item" href="../html/booking.html">booking</a>
           </div>
         </li>
       </ul>
