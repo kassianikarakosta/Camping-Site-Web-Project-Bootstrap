@@ -8,7 +8,7 @@ const querystring = require('querystring');
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'camping_page',
+    database: 'Patras_Camping_Database',
     password: 'kassiani',
     port: 5432, // Default PostgreSQL port
 });
