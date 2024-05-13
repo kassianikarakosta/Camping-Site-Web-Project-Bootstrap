@@ -1,17 +1,12 @@
 $(document).ready(function() {
     console.log("Document ready");
     // Bind calculateTotalPrice function to input event of each input field
-    $('#bookingForm input').on('input', function() {
-        console.log('Input changed');
-        calculateTotalPrice();
+    $('input').on('input', function() {
+        calculateTotalPriceday();
     });
-    $('#myInput').on('input', function() {
-        // Function to execute when input value changes
-        console.log("Input value changed:", $(this).val());
-        // Call any other function you want here
-    });
+    
     // Function to calculate total price
-    function calculateTotalPrice() {
+    function calculateTotalPriceday() {
         // Get values of all input fields
         var persons = parseInt($('#number_of_persons').val());
         var sunnyCamping = parseInt($('#sunny_camping').val());
@@ -30,9 +25,9 @@ $(document).ready(function() {
                          (sunnyCampers * 18) + (treeCampers * 17) + (normalCampers * 16) +
                          (twoPersonsBungalow * 60) + (threePersonsBungalow * 70) + (fourPersonsBungalow * 80) +
                          (bellTent * 60);
-        console.log('Total Price:', totalPrice);
+        
         // Update total price input field
-        $('#total_price').val(totalPrice);
+        $('#total_price_day').val(totalPrice);
     }
     
     
