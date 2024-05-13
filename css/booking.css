@@ -1,0 +1,7 @@
+.buffers {
+    margin-bottom: 10px;
+    padding: 10px; /* Add padding to create space around the text */
+    color: #333;
+    background-color: #fff9ec; /* Light blue background color */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}

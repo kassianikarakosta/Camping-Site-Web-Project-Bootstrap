@@ -14,3 +14,6 @@
     box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
     background-color: #fff; /* Add this line to set white background */
 }
+.height{
+     min-height:100vh ;
+}
