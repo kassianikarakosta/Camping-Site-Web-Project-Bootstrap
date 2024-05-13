@@ -1,0 +1,52 @@
+CREATE TABLE IF NOT EXISTS USERS (
+    userID SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
+    id_number VARCHAR(255) NOT NULL,
+    birth_date DATE NOT NULL,
+    user_type VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    street_name VARCHAR(255) NOT NULL,
+    street_num INTEGER NOT NULL,
+    post_code INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS RESERVATION (
+    reservID SERIAL PRIMARY KEY,
+    arrival_date DATE NOT NULL,
+    depart_date DATE NOT NULL,
+    persons_num INTEGER NOT NULL,
+    final_price FLOAT NOT NULL,
+    userID INTEGER NOT NULL,
+    placeID INTEGER NOT NULL,
+    FOREIGN KEY (userID) REFERENCES USERS (userID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    FOREIGN KEY (placeID) REFERENCES PLACE (placeID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS PLACE (
+    placeID SERIAL PRIMARY KEY,
+    place_type VARCHAR(255) NOT NULL,
+    category_type VARCHAR(255) NOT NULL,
+    price_per_day FLOAT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS EMAIL (
+    senderID SERIAL PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    mail_subject VARCHAR(255) NOT NULL,
+    mail_message TEXT NOT NULL
+);
+
+
+
+DROP TABLE IF EXISTS PLACE, RESERVATION, USERS, EMAIL;
