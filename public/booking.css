@@ -9,13 +9,20 @@
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
 }
-.title{color: #004080;
-        font-size: 40px;}
-.form-group h3{color: #004080;
-    font-size: 25px;}
-label{font-weight: bold;}
+.title {color: #004080;
+        font-size: 40px;
+}
+
+.form-group h3 {
+    color: #004080;
+    font-size: 25px;
+}
+
+label {
+    font-weight: bold;
+}
 
 .container
 {
-    margin-bottom: 1em;
+    margin: 2em auto;
 }

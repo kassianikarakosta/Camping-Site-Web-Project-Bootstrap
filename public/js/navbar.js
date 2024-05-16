@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
           <li class="nav-item">
-              <a class="nav-link" href="../views/signin.html">Sign In</a>
+              <a class="nav-link" href="../views/login.html">Log In</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="../views/signup.html">Sign Up</a>
