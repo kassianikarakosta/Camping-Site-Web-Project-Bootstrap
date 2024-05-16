@@ -104,3 +104,13 @@ p
     margin-bottom: 10px;
     text-align: center;
 } */
+
+.custom-carousel-container {
+    width: 100%; /* Adjust this value as needed */
+    max-width: 1200px; /* Adjust this value as needed */
+    margin: 1em auto; /* Centers the carousel */
+}
+
+.custom-carousel-item img {
+    width: 100%; /* Make the images fill the container */
+}
