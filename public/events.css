@@ -1,16 +1,40 @@
-/* .section-title {
-    color: #004080;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-} */
-
-.card
-{
+.event-card {
     margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Add this line to set white background */
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    border-radius: 15px 15px 0 0;
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover;
+}
+
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+}
+
+.event-details {
+    margin-top: 15px;
+}
+
+.event-details p {
+    margin-bottom: 5px;
 }
