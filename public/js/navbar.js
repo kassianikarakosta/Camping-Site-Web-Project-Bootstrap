@@ -1,54 +1,54 @@
 document.addEventListener("DOMContentLoaded", function() {
   const navbar = `
-  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
-  <a class="navbar-brand">Patras Camping</a>
-  <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
+    <a class="navbar-brand">Patras Camping</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="../views/home.html">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/accomondation.html">Accommodation</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/events.html">Events</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/booking.html">Booking</a>
-          </li>
-      </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../views/home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/accomondation.html">Accommodation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/events.html">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/booking.html">Booking</a>
+            </li>
+        </ul>
 
-      <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
-          <li class="nav-item">
-              <a class="nav-link" href="../views/login.html">Log In</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/signup.html">Sign Up</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="../views/profile.html">Profile</a>
-          </li>
-      </ul>
-  </div>
-</nav>
+        <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
+            <li class="nav-item">
+                <a class="nav-link" href="../views/login.html">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/signup.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../views/profile.html">Profile</a>
+            </li>
+        </ul>
+    </div>
+    </nav>
 
   `;
 
   const footer = `
-  <footer class="bg-warning text-center">    
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-          © 2024 Copyright: Team 25: Karakosta Kassiani, Fragki Sofia
-      </div>
-      <!-- Copyright -->
-  </footer>
+    <footer class="bg-warning text-center">    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2024 Copyright: Team 25: Karakosta Kassiani, Fragki Sofia
+        </div>
+        <!-- Copyright -->
+    </footer>
   `;
 
   // Insert the navbar HTML into the DOM
