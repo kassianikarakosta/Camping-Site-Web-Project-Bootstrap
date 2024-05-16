@@ -2,18 +2,11 @@
     margin: 2.5em auto;
 }
 
-/* .section-title {
-    color: #004080;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-} */
-
 form {
     background-color: #F5F2EB;
     padding: 2em;
-    border: 1px solid #F5F2EB;
-    border-radius: 5px;
+    border: 0.1em solid #F5F2EB;
+    border-radius: 0.7em;
     box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
 }
 

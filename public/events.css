@@ -1,22 +1,22 @@
 .event-card {
-    margin-bottom: 30px;
+    margin-bottom: 2em;
 }
 
 .card {
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    box-shadow: 0 0.35em 0.5em rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.3em);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
-    border-radius: 15px 15px 0 0;
-    height: 200px; /* Adjust the height as needed */
+    border-radius: 1em 1em 0 0;
+    height: 13em; /* Adjust the height as needed */
     object-fit: cover;
 }
 
@@ -32,9 +32,9 @@
 }
 
 .event-details {
-    margin-top: 15px;
+    margin-top: 1em;
 }
 
 .event-details p {
-    margin-bottom: 5px;
+    margin-bottom: 0.3em;
 }

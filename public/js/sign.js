@@ -6,3 +6,4 @@ document.getElementById('showPasswordToggle').addEventListener('click', function
         passwordInput.type = 'password';
     }
 });
+
