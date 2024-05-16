@@ -1,8 +1,4 @@
-body {
-    margin: 0;
-    /* font-family: Arial, sans-serif; */
-    background-color: #FCF8DF;
-}
+
 
 :root {
     font-size: 15px;
@@ -20,34 +16,14 @@ body {
 .container {
     height: 100vh;
 }
-.choose{
-   
-   
-    background-color: #F9F4CF; 
-}
+
 .description{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #FCFAE7;
+    /* background-color: #FCFAE7; */
     
 }
-/* .left-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F9F4CF;
-}
-
-.middle {
-    background-color: #FCFAE7;
-}
-
-.right-column {
-    display: flex;
-    flex-direction: column;
-    background-color: #FCFAE7;
-} */
 
 .btn {
     
