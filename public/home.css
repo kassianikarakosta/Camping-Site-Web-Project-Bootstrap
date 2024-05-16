@@ -107,7 +107,7 @@ p
 
 .custom-carousel-container {
     width: 100%; /* Adjust this value as needed */
-    max-width: 1200px; /* Adjust this value as needed */
+    max-width: 100em; /* Adjust this value as needed */
     margin: 1em auto; /* Centers the carousel */
 }
 
