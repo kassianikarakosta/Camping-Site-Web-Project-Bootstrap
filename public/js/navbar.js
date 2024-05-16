@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <footer class="bg-warning text-center">    
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-          © 2024 Copyright: Team 25: Karakosta, Fragki
+          © 2024 Copyright: Team 25: Karakosta Kassiani, Fragki Sofia
       </div>
       <!-- Copyright -->
   </footer>
