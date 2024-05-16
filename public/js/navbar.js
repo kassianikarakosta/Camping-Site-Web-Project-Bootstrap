@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
           <li class="nav-item">
               <a class="nav-link" href="../views/contact.html">Contact</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../views/booking.html">Booking</a>
+          </li>
       </ul>
 
       <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
