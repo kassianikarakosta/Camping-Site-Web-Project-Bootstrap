@@ -66,6 +66,11 @@ router.get('/bell_tents', (req, res) => {
   res.render('accomondation4', { title: 'Bell Tents',  customCss: "/accomondation.css",message: 'Learn more about us on this page.' });
 });
 
+// // Add more routes here as needed
+router.get('/adminbooking', (req, res) => {
+  res.render('adminbooking', { title: 'Admin Booking',  customCss: "/booking.css",message: 'Learn more about us on this page.' });
+});
+
 
 
 export default router;
