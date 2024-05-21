@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Home route
 router.get('/', (req, res) => {
-  res.render('home', { title: 'Home Page', style: "home.css", message: 'Welcome to the Home Page!' });
+  res.render('home', { title: 'Home Page' ,customCss: '/home.css', message: 'Welcome to the Home Page!' });
 });
 
 // Add more routes here as needed
