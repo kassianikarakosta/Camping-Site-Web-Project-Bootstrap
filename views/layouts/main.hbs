@@ -1,0 +1,46 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <!-- Include Bootstrap CSS and any other necessary CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- General CSS -->
+    <link rel="stylesheet" href="../public/style.css">
+
+    <!-- Nav Bar CSS -->
+    <link rel="stylesheet" href="../public/navbar.css">   
+    
+</head>
+<body>
+    <div class="flex-container">
+        {{> navbar}}
+        <div class="content">
+            {{{body}}}
+        </div>
+        {{> footer}}
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const currentPageUrl = window.location.href;
+        const navLinks = document.querySelectorAll('.nav-item a');
+
+        navLinks.forEach(function(link) {
+          if (link.href === currentPageUrl) {
+            link.parentNode.classList.add('active');
+          }
+        });
+
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        document.querySelector('.navbar-toggler').addEventListener('click', function() {
+          navbarCollapse.classList.toggle('show');
+        });
+      });
+    </script>
+
+    
+</body>
+</html>

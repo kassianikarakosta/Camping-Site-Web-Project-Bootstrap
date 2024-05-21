@@ -1,62 +1,68 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const navbar = `
-    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
-    <a class="navbar-brand">Patras Camping</a>
-    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+// document.addEventListener("DOMContentLoaded", function() {
+//   const navbar = `
+//     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
+//     <a class="navbar-brand">Patras Camping</a>
+//     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+//         <span class="navbar-toggler-icon"></span>
+//     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../views/home.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/accomondation.html">Accommodation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/events.html">Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/contact.html">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/booking.html">Booking</a>
-            </li>
-        </ul>
+//     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+//         <ul class="navbar-nav mr-auto">
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/home.html">Home</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/accomondation.html">Accommodation</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/events.html">Events</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/contact.html">Contact</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/booking.html">Booking</a>
+//             </li>
+//         </ul>
 
-        <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
-            <li class="nav-item">
-                <a class="nav-link" href="../views/login.html">Log In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/signup.html">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../views/profile.html">Profile</a>
-            </li>
-        </ul>
-    </div>
-    </nav>
+//         <ul class="navbar-nav ml-auto"> <!-- Right-aligned links -->
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/login.html">Log In</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/signup.html">Sign Up</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/profile.html">Profile</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link" href="../html-files/adminbooking.html">Admin Panel</a>
+//             </li>
+//             <li class="nav-item">
+//                 <a class="nav-link">Αποσύνδεση</a>
+//             </li>
+//         </ul>
+//     </div>
+//     </nav>
 
-  `;
+//   `;
 
-  const footer = `
-    <footer class="bg-warning text-center">    
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2024 Copyright: Team 25: Karakosta Kassiani, Fragki Sofia
-        </div>
-        <!-- Copyright -->
-    </footer>
-  `;
+//   const footer = `
+//     <footer class="bg-warning text-center">    
+//         <!-- Copyright -->
+//         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+//             © 2024 Copyright: Team 25: Karakosta Kassiani, Fragki Sofia
+//         </div>
+//         <!-- Copyright -->
+//     </footer>
+//   `;
 
-  // Insert the navbar HTML into the DOM
-  document.body.insertAdjacentHTML("afterbegin", navbar);
-  document.body.insertAdjacentHTML("beforeend", footer);
+//   // Insert the navbar HTML into the DOM
+//   document.body.insertAdjacentHTML("afterbegin", navbar);
+//   document.body.insertAdjacentHTML("beforeend", footer);
 
   
-});
+// });
 
 
 document.addEventListener("DOMContentLoaded", function() {

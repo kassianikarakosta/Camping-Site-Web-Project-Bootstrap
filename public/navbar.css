@@ -1,6 +1,5 @@
-/* .navbar-nav .nav-link.active {
-    color: white;
-} */
+/* Existing CSS for navbar and footer */
+
 .nav-link.active {
     color: white;
 }
@@ -21,7 +20,33 @@
 }
 
 .dropdown-item:hover {
-    /* color: #D4462E; */
     background-color: #ff6347;
 }
 
+/* Additional CSS for layout */
+/* html, body {
+    height: 100%;
+    margin: 0;
+} */
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    width: 100%;
+    background-color: #ffc107;
+    color: #000;
+    text-align: center;
+    padding: 1em 0;
+}
