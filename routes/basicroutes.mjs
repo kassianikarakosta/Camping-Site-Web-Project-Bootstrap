@@ -42,6 +42,11 @@ router.get('/booking', (req, res) => {
 });
 
 // // Add more routes here as needed
+router.get('/accomondation', (req, res) => {
+  res.render('accomondation', { title: 'Accomondation',  customCss: "/accomondation.css",message: 'Learn more about us on this page.' });
+});
+
+// // Add more routes here as needed
 router.get('/camping', (req, res) => {
   res.render('accomondation', { title: 'Camping',  customCss: "/accomondation.css",message: 'Learn more about us on this page.' });
 });
