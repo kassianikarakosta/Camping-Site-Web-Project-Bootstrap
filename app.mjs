@@ -1,18 +1,34 @@
-import express from 'express'
-const app = express()
+import express from 'express';
+import { create } from 'express-handlebars';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import routes from './routes/basicroutes.mjs';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-import dotenv from 'dotenv'
-if (process.env.NODE_ENV !== 'production') {
-    dotenv.config();
-}
+const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+// Set up Handlebars engine
+const hbs = create({
+  extname: 'hbs',
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views', 'layouts'),
+  partialsDir: path.join(__dirname, 'views', 'partials')
+});
 
-app.use(express.static('public'))
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
-// //Διαδρομές. Αντί να γράψουμε τις διαδρομές μας εδώ, τις φορτώνουμε από ένα άλλο αρχείο
-// import routes from './routes/task-list-routes.mjs'
-// //και τώρα χρησιμοποιούμε αυτές τις διαδρομές
-// app.use('/', routes);
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Use routes from routes directory
+app.use('/', routes);
+
+// Start the server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
