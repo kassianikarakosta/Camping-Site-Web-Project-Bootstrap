@@ -1,0 +1,147 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <h2 class="text-center mb-4 title">Booking</h2>
+            <form>
+                <h3 class="buffers">Arrival and departure</h3>
+                <div class="form-group">
+                    
+                    <label for="arrival_date">Arrival date</label>
+                    <input type="date" class="form-control" id ="arrival_date" name="arrival_date">
+                    <label for="departure_date">Departure date</label>
+                    <input type="date" class="form-control" id ="departure_date" name="departure_date">
+                    <br>
+                    <button class="btn btn-primary btn-block" type="submit" value="Search">Search</button>
+                </div>
+                <h3 class="buffers">Lodging details</h3>
+                <div class="form-group">
+                    
+                    <label for="number_of_persons">Persons 8€/day</label>
+                    <p>Persons staying in bungalows should not be included in this number</p>
+                    <input type="number" class="form-control" id="number_of_persons" name="number_of_persons" value="1">
+                    
+                </div>
+                <h3 class="buffers">Room types</h3>
+                <div class="form-group">
+                    <h3>Camping</h3>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <label for="sunny_camping">Seaside</label>
+                            <p>12€/day</p>
+                            <input type="number" class="form-control" id="sunny_camping" name="sunny_camping" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="tree_camping">Natural shadow</label>
+                            <p>11€/day</p>
+                            <input type="number" class="form-control" id="tree_camping" name="tree_camping" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="normal_camping">Normal</label>
+                            <p>11€/day</p>
+                            <input type="number" class="form-control" id="normal_camping" name="normal_camping" value="0">
+                        </div>
+                    </div> 
+                </div>  
+                <div class="form-group">
+                    <h3>Campers</h3>
+                    <div class="row align-items-center">
+                        
+                        <div class="col">
+                            <label for="sunny_campers">Seaside</label>
+                            <p>18€/day </p>
+                            <input type="number" class="form-control" id="sunny_campers" name="sunny_campers" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="tree_campers">Natural shadow</label>
+                            <p>17€/day</p>
+                            <input type="number" class="form-control" id="tree_campers" name="tree_campers" value="0">
+                
+                        </div>
+                        <div class="col">
+                            <label for="normal_campers">Normal </label>
+                            <p>16€/day</p>
+                            <input type="number" class="form-control" id="normal_campers" name="normal_campers" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Bungalow</h3>
+                    <div class="row align-items-center">
+                        
+                        <div class="col">
+                            <label for="2_persons">2 Persons bungalow </label>
+                            <p>60€/day</p>
+                            <input type="number" class="form-control" id="2_persons" name="2_persons" value="0">
+                        </div>
+                        <div class="col">
+                            <label for="3_persons">3 Persons bungalow </label>
+                            <p>70€/day</p>
+                            <input type="number" class="form-control" id="3_persons" name="3_persons" value="0">
+                
+                        </div>
+                        <div class="col">
+                            <label for="4_persons">4 Persons bungalow </label>
+                            <p>80€/day</p>
+                                <input type="number" class="form-control" id="4_persons" name="4_persons" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Bell tent </h3>
+                    <p> 60€/day</p>
+                    <input type="number" class="form-control" id="bell_tent" name="bell_tent" value="0">
+                </div>
+                <h3 class="buffers">Calculate price</h3>
+                <div class="form-group">
+                    
+                    <label>Price per day</label>
+                    <input type="number" id="total_price_day" class="form-control" value="0" readonly>
+                    <label>Total price</label>
+                    <input type="number" id="total_price" class="form-control" value="0" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Book</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        console.log("Document ready");
+        // Bind calculateTotalPrice function to input event of each input field
+        $('input').on('input', function() {
+            calculateTotalPriceday();
+            
+        });
+        
+        // Function to calculate total price
+        function calculateTotalPriceday() {
+            // Get values of all input fields
+            var persons = parseInt($('#number_of_persons').val());
+            var sunnyCamping = parseInt($('#sunny_camping').val());
+            var treeCamping = parseInt($('#tree_camping').val());
+            var normalCamping = parseInt($('#normal_camping').val());
+            var sunnyCampers = parseInt($('#sunny_campers').val());
+            var treeCampers = parseInt($('#tree_campers').val());
+            var normalCampers = parseInt($('#normal_campers').val());
+            var twoPersonsBungalow = parseInt($('#2_persons').val());
+            var threePersonsBungalow = parseInt($('#3_persons').val());
+            var fourPersonsBungalow = parseInt($('#4_persons').val());
+            var bellTent = parseInt($('#bell_tent').val());
+            var arrivalDate = new Date($('#arrival_date').val());
+            var departureDate = new Date($('#departure_date').val());
+            var daysBetween = Math.round((departureDate - arrivalDate) / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+        
+            // Calculate total price based on input values
+            var totalPrice = (persons * 8) + (sunnyCamping * 12) + (treeCamping * 11) + (normalCamping * 11) +
+                            (sunnyCampers * 18) + (treeCampers * 17) + (normalCampers * 16) +
+                            (twoPersonsBungalow * 60) + (threePersonsBungalow * 70) + (fourPersonsBungalow * 80) +
+                            (bellTent * 60);
+            var totalPricefinal = daysBetween*totalPrice;
+            // Update total price input field
+            $('#total_price_day').val(totalPrice);
+            $('#total_price').val(totalPricefinal);
+        }  
+        
+    });
+</script>
