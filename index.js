@@ -4,7 +4,6 @@ const path = require('path');
 const { Pool } = require('pg');
 const querystring = require('querystring');
 
-
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
