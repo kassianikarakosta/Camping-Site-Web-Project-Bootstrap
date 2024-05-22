@@ -33,12 +33,13 @@ const hbs = create({
 });
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'camping_page',
-  password: 'kassiani',
-  port: 5432, // Default PostgreSQL port
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT, // Default PostgreSQL port
 });
+
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
