@@ -7,6 +7,9 @@ import routes from './routes/basicroutes.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// npm install pg
+const { Pool } = require('pg');
+
 const app = express();
 
 // Set up Handlebars engine
@@ -15,6 +18,14 @@ const hbs = create({
   defaultLayout: 'main',
   layoutsDir: path.join(__dirname, 'views', 'layouts'),
   partialsDir: path.join(__dirname, 'views', 'partials')
+});
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'Patras_Camping_Database',
+  password: 'kassiani',
+  port: 5432, // Default PostgreSQL port
 });
 
 app.engine('hbs', hbs.engine);
