@@ -3,12 +3,10 @@ import { create } from 'express-handlebars';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import routes from './routes/basicroutes.mjs';
+import { Pool } from 'pg';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// npm install pg
-const { Pool } = require('pg');
 
 const app = express();
 
@@ -23,7 +21,7 @@ const hbs = create({
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'Patras_Camping_Database',
+  database: 'camping_page',
   password: 'kassiani',
   port: 5432, // Default PostgreSQL port
 });

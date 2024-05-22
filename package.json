@@ -1,8 +1,7 @@
-
 {
   "name": "camping-site-web-project-bootstrap",
   "version": "1.0.0",
-  "description": "This is a test page for the web dev project",
+  "description": "This is a web project for a camping site",
   "main": "app.mjs",
   "type": "module",
   "scripts": {
@@ -11,7 +10,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.2"
+    "express-handlebars": "^5.3.2",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
