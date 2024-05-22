@@ -3,12 +3,26 @@ import { create } from 'express-handlebars';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import routes from './routes/basicroutes.mjs';
-import { Pool } from 'pg';
+// import { Pool } from 'pg';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+import pkg from 'pg';
+
+const { Pool } = pkg;
+
+// Create a new Express application
 const app = express();
+
+// Configure the PostgreSQL connection pool
+const pool = new Pool({
+  user: 'your-username',
+  host: 'your-hostname',
+  database: 'your-database-name',
+  password: 'your-password',
+  port: 5432, // Default PostgreSQL port
+});
 
 // Set up Handlebars engine
 const hbs = create({
@@ -18,13 +32,13 @@ const hbs = create({
   partialsDir: path.join(__dirname, 'views', 'partials')
 });
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'camping_page',
-  password: 'kassiani',
-  port: 5432, // Default PostgreSQL port
-});
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'camping_page',
+//   password: 'kassiani',
+//   port: 5432, // Default PostgreSQL port
+// });
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
