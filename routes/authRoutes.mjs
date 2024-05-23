@@ -12,7 +12,7 @@ const pool = new Pool();
 // Signup route
 router.post('/signup', async (req, res) => {
     const {
-      firstname, lastname, username, user_password, email, phone, idnumber,
+      firstname, lastname, username, password, email, phone, idnumber,
       birthdate, city, streetname, streetnum, postcode
     } = req.body;
   
@@ -25,7 +25,7 @@ router.post('/signup', async (req, res) => {
           id_number, birth_date, user_type, city, street_name, street_num, post_code
         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
         RETURNING userID`, [
-          firstname, lastname, username, user_password, email, phone,
+          firstname, lastname, username, password, email, phone,
           idnumber, birthdate, user_type, city, streetname, streetnum, postcode
         ]);
       req.session.loggedUserId = result.rows[0].userid;
