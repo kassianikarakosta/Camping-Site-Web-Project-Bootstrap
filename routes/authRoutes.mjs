@@ -28,7 +28,6 @@ router.post('/signup', async (req, res) => {
           firstname, lastname, username, user_password, email, phone,
           idnumber, birthdate, user_type, city, streetname, streetnum, postcode
         ]);
-  
       req.session.loggedUserId = result.rows[0].userid;
       res.redirect('/profile'); // Redirect to profile page
     } catch (err) {
