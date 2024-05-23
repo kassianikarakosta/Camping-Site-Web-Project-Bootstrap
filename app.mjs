@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import routes from './routes/basicroutes.mjs';
 import authRoutes from './routes/authRoutes.mjs';
+import availabilityRoutes from './routes/availabilityRoutes.mjs';
 import { authenticateUser, sessionConfig } from './app-setup/app-setup-session.mjs';
 import 'dotenv/config';
 import pkg from 'pg';
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use routes from routes directory
 app.use('/', routes);
 app.use('/auth', authRoutes); // Use the authentication routes
+app.use('/api', availabilityRoutes);
 // console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 
 // Initialize PostgreSQL pool
