@@ -142,6 +142,34 @@
             $('#total_price_day').val(totalPrice);
             $('#total_price').val(totalPricefinal);
         }  
+        $(document).ready(function() {
+        $('#search_button').on('click', function(event) {
+            event.preventDefault();
+
+            var arrivalDate = $('#arrival_date').val();
+            var departureDate = $('#departure_date').val();
+
+            // Send AJAX request to check availability
+            $.ajax({
+                url: '/api/availability',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    arrivalDate: arrivalDate,
+                    departureDate: departureDate
+                }),
+                success: function(response) {
+                    // Handle the response, update the UI accordingly
+                    console.log('Availability:', response);
+                    // Example: Display availability in an alert or update a div
+                    alert(JSON.stringify(response));
+                },
+                error: function(error) {
+                    console.error('Error checking availability:', error);
+                }
+            });
+        });
+    });
         
     });
 </script>
