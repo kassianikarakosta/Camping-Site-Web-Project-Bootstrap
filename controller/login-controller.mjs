@@ -49,7 +49,7 @@ export let doLogin = async (req, res) => {
 
             if (match) {
                 req.session.loggedUserId = user.userid;
-                res.redirect('/');
+                res.redirect('/profile');
             } else {
                 res.render('login', { message: 'Incorrect password' });
             }

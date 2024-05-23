@@ -33,6 +33,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.get('/navbar', (req, res) => {
+//   res.render('navbar', { isAuthenticated: req.session.loggedUserId });
+// });
+
+
 // Set up Handlebars engine
 const hbs = create({
   extname: 'hbs',
