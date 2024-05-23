@@ -6,9 +6,9 @@ body{
     font-size: 15px;
 }
 
-.height{
+/* .height{
     min-height: 100vh;
-}
+} */
 
 .section-title {
     color: #004080;
@@ -20,4 +20,10 @@ body{
     color: #333;
     font-size: 16px;
     line-height: 1.6;
+}
+
+.error-message {
+    color: #d9534f; /* Red color */
+    font-size: 14px;
+    margin-top: 5px;
 }

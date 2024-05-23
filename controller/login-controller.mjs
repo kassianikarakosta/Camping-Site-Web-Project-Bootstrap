@@ -148,37 +148,65 @@ export let doSignUp = async (req, res) => {
   }
 };
 
+// export let doLogin = async (req, res) => {
+//   try {
+//     const { username, password } = req.body;
+//     const result = await pool.query('SELECT * FROM USERS WHERE username = $1', [username]);
+
+//     if (result.rows.length > 0) {
+//       const user = result.rows[0];
+//       const match = await bcrypt.compare(password, user.user_password);
+
+//       if (match) {
+//         req.session.user = {
+//           id: user.userid,
+//           username: user.username,
+//           user_type: user.user_type
+//         };
+//         res.redirect('/profile');
+//       } else {
+//         res.render('login', { message: 'Incorrect password' });
+//       }
+//     } else {
+//       res.render('login', { message: 'User not found' });
+//     }
+//   } catch (error) {
+//     console.error('Login error:', error);
+//     res.render('login', { message: 'Login failed. Please try again.' });
+//   }
+// };
 export let doLogin = async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const result = await pool.query('SELECT * FROM USERS WHERE username = $1', [username]);
+    try {
+        const { username, password } = req.body;
+        const result = await pool.query('SELECT * FROM USERS WHERE username = $1', [username]);
 
-    if (result.rows.length > 0) {
-      const user = result.rows[0];
-      const match = await bcrypt.compare(password, user.user_password);
+        if (result.rows.length > 0) {
+            const user = result.rows[0];
+            const match = await bcrypt.compare(password, user.user_password);
 
-      if (match) {
-        req.session.user = {
-          id: user.userid,
-          username: user.username,
-          user_type: user.user_type
-        };
-        res.redirect('/profile');
-      } else {
-        res.render('login', { message: 'Incorrect password' });
-      }
-    } else {
-      res.render('login', { message: 'User not found' });
+            if (match) {
+                req.session.user = {
+                    id: user.userid,
+                    username: user.username,
+                    user_type: user.user_type
+                };
+                res.redirect('/profile');
+            } else {
+                res.render('login', { message: 'Incorrect password. Please try again.' });
+            }
+        } else {
+            res.render('login', { message: 'User not found. Please try again.' });
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        res.render('login', { message: 'Login failed. Please try again.' });
     }
-  } catch (error) {
-    console.error('Login error:', error);
-    res.render('login', { message: 'Login failed. Please try again.' });
-  }
 };
+
 
 export let doLogout = (req, res) => {
   req.session.destroy();
-  res.redirect('/login');
+  res.redirect('/auth/login');
 };
 
 export let checkAuthenticated = (req, res, next) => {

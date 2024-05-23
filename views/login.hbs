@@ -4,6 +4,9 @@
             
             <form action="/auth/login" method="POST">
                 <h2 class="section-title">Log In</h2>
+                {{#if message}}
+                    <p class="error-message">{{message}}</p>
+                {{/if}}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
