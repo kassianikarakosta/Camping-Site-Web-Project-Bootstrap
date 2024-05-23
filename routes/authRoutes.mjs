@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
           idnumber, birthdate, user_type, city, streetname, streetnum, postcode
         ]);
       req.session.loggedUserId = result.rows[0].userid;
-      res.redirect('/profile'); // Redirect to profile page
+      res.redirect('/login'); // Redirect to profile page
     } catch (err) {
       console.error(err);
       res.redirect('/signup'); // Redirect back to signup on error
