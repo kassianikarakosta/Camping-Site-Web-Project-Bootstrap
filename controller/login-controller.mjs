@@ -23,11 +23,11 @@ export let showSignUpForm = (req, res) => {
 export let doSignUp = async (req, res) => {
     try {
         const { firstname, lastname, username, password, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode } = req.body;
-        // const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         await pool.query(
             'INSERT INTO USERS (first_name, last_name, username, user_password, email, phone, id_number, birth_date, user_type, city, street_name, street_num, post_code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)',
-            [firstname, lastname, username, password, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode]
+            [firstname, lastname, username, hashedPassword, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode]
         );
         
         res.redirect('/login');
