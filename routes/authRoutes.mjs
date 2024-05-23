@@ -9,32 +9,32 @@ const router = express.Router();
 
 const pool = new Pool();
 
-// Signup route
-router.post('/signup', async (req, res) => {
-    const {
-      firstname, lastname, username, password, email, phone, idnumber,
-      birthdate, city, streetname, streetnum, postcode
-    } = req.body;
+// // Signup route
+// router.post('/signup', async (req, res) => {
+//     const {
+//       firstname, lastname, username, password, email, phone, idnumber,
+//       birthdate, city, streetname, streetnum, postcode
+//     } = req.body;
   
-    const user_type = 'user'; // Default user type
+//     const user_type = 'user'; // Default user type
   
-    try {
-      const result = await pool.query(
-        `INSERT INTO USERS (
-          first_name, last_name, username, user_password, email, phone,
-          id_number, birth_date, user_type, city, street_name, street_num, post_code
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
-        RETURNING userID`, [
-          firstname, lastname, username, password, email, phone,
-          idnumber, birthdate, user_type, city, streetname, streetnum, postcode
-        ]);
-      req.session.loggedUserId = result.rows[0].userid;
-      res.redirect('/login'); // Redirect to profile page
-    } catch (err) {
-      console.error(err);
-      res.redirect('/signup'); // Redirect back to signup on error
-    }
-  });
+//     try {
+//       const result = await pool.query(
+//         `INSERT INTO USERS (
+//           first_name, last_name, username, user_password, email, phone,
+//           id_number, birth_date, user_type, city, street_name, street_num, post_code
+//         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+//         RETURNING userID`, [
+//           firstname, lastname, username, password, email, phone,
+//           idnumber, birthdate, user_type, city, streetname, streetnum, postcode
+//         ]);
+//       req.session.loggedUserId = result.rows[0].userid;
+//       res.redirect('/profile'); // Redirect to profile page
+//     } catch (err) {
+//       console.error(err);
+//       res.redirect('/signup'); // Redirect back to signup on error
+//     }
+//   });
   
 
 // Login route
