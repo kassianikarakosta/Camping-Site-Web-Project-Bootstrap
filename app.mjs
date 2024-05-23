@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import routes from './routes/basicroutes.mjs';
 import authRoutes from './routes/authRoutes.mjs';
 import availabilityRoutes from './routes/availabilityRoutes.mjs';
-import { authenticateUser, sessionConfig } from './app-setup/app-setup-session.mjs';
+// import { authenticateUser, sessionConfig } from './app-setup/app-setup-session.mjs';
 import { sessionConfig, setUser } from './app-setup/app-setup-session.mjs';
 import 'dotenv/config';
 import pkg from 'pg';
