@@ -4,10 +4,18 @@ import { showLogInForm, showSignUpForm, doLogin, doSignUp, doLogout } from '../c
 import pkg from 'pg';
 
 const { Pool } = pkg;
+const pool = new Pool();
 const router = express.Router();
 // console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 
-const pool = new Pool();
+// middleware/auth.js
+export function setUser(req, res, next) {
+    res.locals.user = req.session.user;
+    next();
+}
+
+
+
 
 router.get('/login', showLogInForm);
 router.post('/login', doLogin);
