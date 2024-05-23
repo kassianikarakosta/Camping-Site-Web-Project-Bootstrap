@@ -1,25 +1,26 @@
-import express from 'express';
+// app-setup-session.mjs
 import session from 'express-session';
-import { getAllTasks } from '../model/sqlite-async/task-list-model-sqlite-async.mjs';
+import 'dotenv/config';
 
-router.use(session({
+const sessionConfig = session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV, maxAge: process.env.SESSION_LIFETIME}
-}));
+    cookie: {
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        maxAge: parseInt(process.env.SESSION_LIFETIME, 10) // Session lifetime in milliseconds
+    }
+});
 
 // Authentication middleware
 const authenticateUser = (req, res, next) => {
     if (req.session && req.session.loggedUserId) {
-        // User is authenticated
         console.log('User is authenticated');
         next();
     } else {
-        // User is not authenticated, redirect to login page
         console.log('User is not authenticated');
         res.redirect('/login');
-        // console.log('User is not authenticated 2');
-
     }
 };
+
+export { sessionConfig, authenticateUser };

@@ -9,8 +9,11 @@
     "dev": "nodemon app.mjs"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "express-handlebars": "^5.3.2",
+    "express-session": "^1.18.0",
     "pg": "^8.11.5"
   },
   "devDependencies": {

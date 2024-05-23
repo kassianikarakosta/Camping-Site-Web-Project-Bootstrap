@@ -1,28 +1,37 @@
+// app.mjs
 import express from 'express';
 import { create } from 'express-handlebars';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import routes from './routes/basicroutes.mjs';
-// import { Pool } from 'pg';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+import authRoutes from './routes/authRoutes.mjs';
+import { authenticateUser, sessionConfig } from './app-setup/app-setup-session.mjs';
+import 'dotenv/config';
 import pkg from 'pg';
 
 const { Pool } = pkg;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Create a new Express application
 const app = express();
 
-// Configure the PostgreSQL connection pool
-// const pool = new Pool({
-//   user: 'your-username',
-//   host: 'your-hostname',
-//   database: 'your-database-name',
-//   password: 'your-password',
-//   port: 5432, // Default PostgreSQL port
-// });
+// Enable session middleware
+app.use(sessionConfig);
+
+// Enable URL-encoded body parsing for POST requests
+app.use(express.urlencoded({ extended: false }));
+
+// Set res.locals.userId for use in templates
+app.use((req, res, next) => {
+  if (req.session) {
+    res.locals.userId = req.session.loggedUserId || 'visitor';
+  } else {
+    res.locals.userId = 'visitor';
+  }
+  next();
+});
 
 // Set up Handlebars engine
 const hbs = create({
@@ -32,15 +41,6 @@ const hbs = create({
   partialsDir: path.join(__dirname, 'views', 'partials')
 });
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT, // Default PostgreSQL port
-});
-
-
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -48,11 +48,20 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Use routes from routes directory
 app.use('/', routes);
+app.use('/auth', authRoutes); // Use the authentication routes
+// console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
+
+// Initialize PostgreSQL pool
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT, 10)
+});
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
