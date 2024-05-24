@@ -8,11 +8,20 @@ const pool = new Pool();
 const router = express.Router();
 // console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 
-// middleware/auth.js
+// Ensure that the user session is checked for authentication
 export function setUser(req, res, next) {
     res.locals.user = req.session.user;
     next();
 }
+
+// Redirect to the login page if the user is not authenticated
+export let checkAuthenticated = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/auth/login');
+    }
+};
 
 
 
