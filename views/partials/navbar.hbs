@@ -25,11 +25,11 @@
 
     <ul class="navbar-nav ml-auto">
       {{#if user}}
-        {{#ifEquals user.user_type 'admin'}}
+        {{#if user.user_type '===' 'admin'}}
           <li class="nav-item">
             <a class="nav-link" href="/adminbooking">Admin Panel</a>
           </li>
-        {{/ifEquals}}
+        {{/if}}
         <li class="nav-item">
           <a class="nav-link" href="/profile">Profile</a>
         </li>
