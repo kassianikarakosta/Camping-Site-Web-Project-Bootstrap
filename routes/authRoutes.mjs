@@ -23,9 +23,6 @@ export let checkAuthenticated = (req, res, next) => {
     }
 };
 
-
-
-
 router.get('/login', showLogInForm);
 router.post('/login', doLogin);
 router.get('/signup', showSignUpForm);
