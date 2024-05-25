@@ -6,44 +6,63 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/camping">Accommodation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/events">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/booking">Booking</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
       {{#if user}}
-        {{#if user.user_type '===' 'admin'}}
-          <li class="nav-item">
-            <a class="nav-link" href="/adminbooking">Admin Panel</a>
-          </li>
-        {{/if}}
         <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/logout">Log Out</a>
+          <a class="nav-link" href="/camping">Accommodation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/events">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
       {{else}}
         <li class="nav-item">
-          <a class="nav-link" href="/auth/login">Log In</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">Sign Up</a>
+          <a class="nav-link" href="/camping">Accommodation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/events">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      {{/if}}
+      
+      {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/booking">Booking</a>
         </li>
       {{/if}}
     </ul>
+
+<ul class="navbar-nav ml-auto">
+    {{#if user}}
+      <!-- Show these links if user is logged in -->
+      <li class="nav-item">
+          <a class="nav-link" href="/adminbooking">Admin Panel</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+  {{else}}
+      <!-- Show these links if user is not logged in -->
+      <li class="nav-item">
+          <a class="nav-link" href="/login">Log In</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign Up</a>
+      </li>
+  {{/if}}
+</ul>
+
   </div>
 </nav>

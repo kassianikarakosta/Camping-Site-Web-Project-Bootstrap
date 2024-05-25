@@ -2,14 +2,20 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8 col-sm-10">
             
-            <form action="../html/profile.html" method="post">
+            <form action="/profile" method="POST" enctype="application/x-www-form-urlencoded">
                 <h2 class="section-title">Profile</h2>
+                {{#if message_success}}
+                    <p class="success-message">{{message_success}}</p>
+                {{/if}}
+                {{#if message_failure}}
+                    <p class="error-message">{{message_failure}}</p>
+                {{/if}}  
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" readonly>
+                    <input type="text" class="form-control" id="username" name="username" value="{{user.username}}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Change Password</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" name="password">
                         <div class="input-group-append">
@@ -22,49 +28,49 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" readonly>
+                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{user.last_name}}" readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" readonly>
+                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{user.first_name}}" readonly>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{user.phone}}" readonly>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="birthdate">Date of Birth</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthdate" readonly>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" value="{{user.birth_date}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="idnumber">ID Number</label>
-                    <input type="text" class="form-control" id="idnumber" name="idnumber" readonly>
+                    <input type="text" class="form-control" id="idnumber" name="idnumber" value="{{user.id_number}}" readonly>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="streetname">Street Name</label>
-                        <input type="text" class="form-control" id="streetname" name="streetname" placeholder="Enter your street name">
+                        <input type="text" class="form-control" id="streetname" name="streetname" value="{{user.street_name}}" readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="streetnum">Street Number</label>
-                        <input type="number" class="form-control" id="streetnum" name="streetnum" placeholder="Enter your street number" min="0">
+                        <input type="number" class="form-control" id="streetnum" name="streetnum" value="{{user.street_num}}" readonly>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city">
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" value="{{user.city}}" readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="postcode">Post Code</label>
-                        <input type="number" class="form-control" id="postcode" name="postcode" placeholder="Enter your Post Code" min="0">
+                        <input type="number" class="form-control" id="postcode" name="postcode" value="{{user.post_code}}" readonly>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Update Profile</button>

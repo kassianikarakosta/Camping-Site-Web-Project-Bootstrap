@@ -2,11 +2,14 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8 col-sm-10">
             
-            <form action="/auth/login" method="POST">
+            <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
                 <h2 class="section-title">Log In</h2>
-                {{#if message}}
-                    <p class="error-message">{{message}}</p>
+                {{#if message_success}}
+                    <p class="success-message">{{message_success}}</p>
                 {{/if}}
+                {{#if message_failure}}
+                    <p class="error-message">{{message_failure}}</p>
+                {{/if}}              
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
