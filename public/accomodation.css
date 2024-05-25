@@ -6,8 +6,8 @@
 
 /* Rest of the styling */
 #pictureholder {
-    font-size: 15px;
-    height: 30em;
+    font-size: 1em;
+    height: 40em;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -28,6 +28,7 @@
 .btn {
     
     background-color: #F8E1AC;
+    margin: 0.5em auto;
     color: gray;
     text-decoration: none;
     border: 0.1em solid transparent;
@@ -78,7 +79,7 @@
 }
 
 .camping-option {
-    width: 90%;
+    width: 95%;
     margin-bottom: 30px;
     padding: 20px;
     border: 1px solid #ddd;
