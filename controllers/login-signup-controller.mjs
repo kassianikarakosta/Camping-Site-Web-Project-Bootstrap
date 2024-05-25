@@ -64,7 +64,6 @@ export let doSignUp = async (req, res) => {
     }
 };
 
-
 // *Login form
 // *Route handler to handle form submission for login
 export let doLogin = async (req, res) => {
@@ -128,7 +127,6 @@ export let doLogin = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
-
 
 
 export let updateProfile = async (req, res) =>

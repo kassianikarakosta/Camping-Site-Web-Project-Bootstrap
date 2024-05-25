@@ -2,6 +2,12 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Inbox</h2>
+            {{#if message_success}}
+                <p class="success-message">{{message_success}}</p>
+            {{/if}}
+            {{#if message_failure}}
+                <p class="error-message">{{message_failure}}</p>
+            {{/if}} 
             {{#if emails}}
             <div class="list-group">
                 {{#each emails}}
