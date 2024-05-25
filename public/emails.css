@@ -1,0 +1,9 @@
+.email-list {
+    cursor: pointer;
+}
+.email-list:hover {
+    background-color: #f4f4f4;
+}
+.email-details {
+    display: none;
+}

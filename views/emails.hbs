@@ -1,0 +1,76 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Inbox</h2>
+            {{#if emails}}
+            <div class="list-group">
+                {{#each emails}}
+                <a href="#" class="list-group-item list-group-item-action email-list" data-toggle="modal" data-target="#emailModal" data-subject="{{mail_subject}}" data-sender="{{firstname}} {{lastname}}" data-email="{{email}}" data-message="{{mail_message}}">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{mail_subject}}</h5>
+                        <small>{{email}}</small>
+                    </div>
+                    <p class="mb-1">Sender: {{firstname}} {{lastname}}</p>
+                    <small>Click to view details</small>
+                </a>
+                {{/each}}
+            </div>
+            {{else}}
+            <p>No emails found.</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailModalLabel">Email Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 id="modalSubject">Email Subject</h5>
+                <p id="modalSender">From: Sender</p>
+                <p id="modalEmail">Email: Email</p>
+                <p id="modalMessage">Message:</p>
+                <p id="modalMessageContent">Message Content</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#emailModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var subject = button.data('subject');
+            var sender = button.data('sender');
+            var email = button.data('email');
+            var message = button.data('message');
+
+            var modal = $(this);
+            modal.find('.modal-title').text('Email Details');
+            modal.find('#modalSubject').text(subject);
+            modal.find('#modalSender').text('From: ' + sender);
+            modal.find('#modalEmail').text('Email: ' + email);
+            modal.find('#modalMessageContent').text(message);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.email-list').click(function() {
+            $('.email-details').show();
+        });
+    });
+</script>

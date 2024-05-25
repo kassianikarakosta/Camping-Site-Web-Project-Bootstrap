@@ -27,3 +27,15 @@ body{
     font-size: 14px;
     margin-top: 5px;
 }
+
+.error-message {
+    color: #d9534f; /* Red color */
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success-message {
+    color: #3fde36; /* Green color */
+    font-size: 14px;
+    margin-top: 5px;
+}

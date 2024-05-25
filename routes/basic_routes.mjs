@@ -1,7 +1,7 @@
 import express from 'express';
 import pkg from 'pg';
 // import bcrypt from 'bcrypt';
-import { doSignUp,doLogin, updateProfile,sendEmail } from '../controllers/login-signup-controller.mjs';
+import { doSignUp, doLogin, updateProfile, sendEmail, showEmails } from '../controllers/login-signup-controller.mjs';
 const router = express.Router();
 const { Pool } = pkg;
 
@@ -99,6 +99,17 @@ router.get('/adminbooking',requireLoginAdmin, (req, res) =>
     res.render('adminbooking', { title: 'AdminBooking', customCss: '/booking.css', user });
 });
 
+router.get('/emails',showEmails, (req, res) =>
+{
+    if (!req.session.user)
+    {
+        req.session.user = null;
+    }
+    const user = req.session.user;
+    
+    res.render('emails', { title: 'Emails', customCss: '/emails.css', user });
+});
+
 router.get('/booking',requireLogin, (req, res) =>
 {
     if (!req.session.user)
@@ -171,6 +182,8 @@ router.post('/signup', doSignUp);
 router.post('/profile', updateProfile);
 router.post('/login', doLogin);
 router.post('/contact', sendEmail);
+// router.get('/emails', showEmails);
+
 
 
 

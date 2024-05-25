@@ -131,7 +131,6 @@ export let doLogin = async (req, res) => {
 
 
 
-
 export let updateProfile = async (req, res) =>
 {
     const {password} = req.body;
@@ -212,3 +211,45 @@ export let sendEmail = async (req, res) =>
 };
 
 
+export let showEmails = async (req, res) =>
+{
+    if (!req.session.user || req.session.user.user_type !== 'admin') 
+    {
+        res.redirect('/login');
+        return;
+    }
+    const user = req.session.user;
+
+    const pool = new Pool({
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        database: process.env.DB_NAME,
+        password: process.env.DB_PASSWORD,
+        port: parseInt(process.env.DB_PORT, 10)
+        });
+
+    try
+    {
+        const client = await pool.connect();
+        try
+        {
+            const result = await client.query('SELECT * FROM email');
+            console.log(result.rows);
+            if (result.rowCount > 0)
+            {
+                res.render('emails', { title: 'Emails', message_success: 'Emails Shown!', customCss: '/emails.css', emails: result.rows, user });
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            res.render('emails', { title: 'Emails', message_failure: 'Failed showing emails!', customCss: '/emails.css', user });
+            res.status(500).send('Error sending message');
+        } finally {
+            client.release();
+            await pool.end();
+        }
+    } catch (error) {
+        console.error('Error connecting to the database:', error);
+        res.render('emails', { title: 'Emails', message_failure: 'Failed with emails! Contact administrator of the website!', customCss: '/emails.css', user });
+        res.status(500).send('Internal Server Error');
+    }
+};
