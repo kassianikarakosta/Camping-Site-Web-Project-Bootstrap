@@ -1,9 +1,22 @@
-.email-list {
-    cursor: pointer;
+.list-group {
+    /* cursor: pointer; */
+    background-color: #F5F2EB;
+    border: 0.1em solid #F5F2EB;
+    border-radius: 0.7em;
+    box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
 }
 .email-list:hover {
-    background-color: #f4f4f4;
+    background-color: #f1ecde98;
 }
 .email-details {
     display: none;
+}
+
+.modal-content
+{
+    background-color: #F5F2EB;
+    border: 0.1em solid #F5F2EB;
+    border-radius: 0.7em;
+    box-shadow: 0 0.5em 0.7em rgba(0, 0, 0, 0.1);
 }

@@ -1,7 +1,8 @@
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Inbox</h2>
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h2 class="section-title">Inbox</h2>
             {{#if message_success}}
                 <p class="success-message">{{message_success}}</p>
             {{/if}}
@@ -28,6 +29,8 @@
     </div>
 </div>
 
+</div>
+
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -38,11 +41,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h5 id="modalSubject">Email Subject</h5>
-                <p id="modalSender">From: Sender</p>
-                <p id="modalEmail">Email: Email</p>
+                {{!-- <h5 id="modalSubject">Email Subject</h5> --}}
+                <p id="modalSender"></p>
+                <p id="modalEmail"></p>
                 <p id="modalMessage">Message:</p>
-                <p id="modalMessageContent">Message Content</p>
+                <p id="modalMessageContent"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,8 +67,8 @@
             var message = button.data('message');
 
             var modal = $(this);
-            modal.find('.modal-title').text('Email Details');
-            modal.find('#modalSubject').text(subject);
+            modal.find('.modal-title').text(subject);
+            //modal.find('#modalSubject').text(subject);
             modal.find('#modalSender').text('From: ' + sender);
             modal.find('#modalEmail').text('Email: ' + email);
             modal.find('#modalMessageContent').text(message);

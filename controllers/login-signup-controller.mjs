@@ -206,6 +206,8 @@ export let sendEmail = async (req, res) =>
         res.render('contact', { title: 'Contact', message_failure: 'Message not sent! Contact administrator of the website!', customCss: '/contact.css' });
         res.status(500).send('Internal Server Error');
     }
+
+    res.redirect('/contact');
 };
 
 
