@@ -4,6 +4,7 @@ import pkg from 'pg';
 import { doSignUp, doLogin, updateProfile } from '../controllers/login-signup-controller.mjs';
 import { sendEmail, showEmails } from '../controllers/email-controller.mjs';
 import { showReservations } from '../controllers/reservations-controller.mjs';
+import { showEvent, addEvent, upload } from '../controllers/add-event-controllers.mjs';
 const router = express.Router();
 const { Pool } = pkg;
 
@@ -41,7 +42,7 @@ router.get('/', (req, res) =>
     res.render('home', { title: 'Home', customCss: '/home.css', user });
 });
 
-router.get('/events', (req, res) =>
+router.get('/events',showEvent, (req, res) =>
 {
     if (!req.session.user)
     {
@@ -49,6 +50,16 @@ router.get('/events', (req, res) =>
     }
     const user = req.session.user;
     res.render('events', { title: 'Events', customCss: '/events.css', user });
+});
+
+router.get('/addevent',requireLoginAdmin, (req, res) =>
+{
+    if (!req.session.user)
+    {
+        req.session.user = null;
+    }
+    const user = req.session.user;
+    res.render('addevent', { title: 'addevent', customCss: '/addevent.css', user });
 });
 
 router.get('/accommodation', (req, res) =>
@@ -123,15 +134,15 @@ router.get('/emails',showEmails, (req, res) =>
 });
 
 router.get('/reservations',showReservations, (req, res) =>
+{
+    if (!req.session.user)
     {
-        if (!req.session.user)
-        {
-            req.session.user = null;
-        }
-        const user = req.session.user;
-        
-        res.render('reservations', { title: 'Reservations', customCss: '/reservations.css', user });
-    });
+        req.session.user = null;
+    }
+    const user = req.session.user;
+    
+    res.render('reservations', { title: 'Reservations', customCss: '/reservations.css', user });
+});
 
 router.get('/booking',requireLogin, (req, res) =>
 {
@@ -205,8 +216,9 @@ router.post('/signup', doSignUp);
 router.post('/profile', updateProfile);
 router.post('/login', doLogin);
 router.post('/contact', sendEmail);
+// router.post('/addevent', addEvent);
 // router.get('/emails', showEmails);
-
+router.post('/addevent', upload.single('image_url'), addEvent);
 
 
 
