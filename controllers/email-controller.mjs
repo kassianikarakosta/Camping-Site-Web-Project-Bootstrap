@@ -66,7 +66,7 @@ export let showEmails = async (req, res) =>
         const client = await pool.connect();
         try
         {
-            const result = await client.query('SELECT * FROM email');
+            const result = await client.query('SELECT * FROM email ORDER BY senderid DESC');
             // console.log(result.rows);
             if (result.rowCount > 0)
             {
