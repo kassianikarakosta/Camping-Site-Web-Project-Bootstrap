@@ -4,5 +4,3 @@
 # Ignore Node.js modules
 **/node_modules/*
 
-# Ignore .env files
-.env
