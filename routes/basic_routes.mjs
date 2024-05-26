@@ -72,56 +72,6 @@ router.get('/accommodation', (req, res) =>
     res.render('accommodation', { title: 'Accommodation', customCss: '/accommodation.css', user });
 });
 
-// router.get('/camping', (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('accomodation', { title: 'Camping', customCss: '/accomodation.css', user });
-// });
-
-// router.get('/campers', (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('accomodation2', { title: 'Campers', customCss: '/accomodation.css', user });
-// });
-
-// router.get('/bungallows', (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('accomodation3', { title: 'Bungallows', customCss: '/accomodation.css', user });
-// });
-
-// router.get('/bell_tents', (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('accomodation4', { title: 'Bell_tents', customCss: '/accomodation.css', user });
-// });
-
-// router.get('/adminbooking',requireLoginAdmin, (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('adminbooking', { title: 'AdminBooking', customCss: '/booking.css', user });
-// });
-
 router.get('/emails',showEmails, (req, res) =>
 {
     if (!req.session.user)
@@ -202,15 +152,6 @@ router.get('/profile',requireLogin, (req, res) =>
     res.render('profile', { title: 'Profile', customCss: '/profile.css', user });
 });
 
-// router.get('/services', (req, res) =>
-// {
-//     if (!req.session.user)
-//     {
-//         req.session.user = null;
-//     }
-//     const user = req.session.user;
-//     res.render('services', { title: 'Services', user });
-// });
 
 router.post('/signup', doSignUp);
 router.post('/profile', updateProfile);
