@@ -1,0 +1,71 @@
+<div id="pictureholder" class="container-fluid">
+</div>
+
+<div class="container-fluid mb-3 mt-3">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="row justify-content-around">
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="btn btn-lg btn-block btn-responsive"  onclick="showDescription('camping', '/img/camping.png')">Camping</a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="btn btn-lg btn-block btn-responsive"  onclick="showDescription('campers', '/img/campers.png')">Campers</a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="btn btn-lg btn-block btn-responsive"  onclick="showDescription('bungallows', '/img/bungallows.png')">Bungalows</a>
+            </div>
+            <div class="col-md-3 col-sm-6 text-center">
+                <a class="btn btn-lg btn-block btn-responsive"  onclick="showDescription('bell_tents', '/img/bell_tents.png')">Bell Tents</a>
+            </div>
+            </div>
+        </div>
+</div>
+
+<div class="container-fluid mb-3 mt-3">
+    <div class="row align-items-center description" id="camping">
+        <div class="col-md-12">
+            <div class="camping-option">
+                <h3>Camping</h3>
+                <p class="section-content">Experience the great outdoors with our scenic camping sites. Nestled in lush greenery, our campsites offer a perfect blend of adventure and tranquility. Enjoy modern amenities like clean restrooms, showers, and fire pits, ensuring a comfortable and memorable stay under the stars.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center description" id="campers">
+        <div class="col-md-12">
+            <div class="camping-option">
+                <h3>Campers</h3>
+                <p class="section-content">Stay in one of our fully equipped campers for a cozy and convenient getaway. Each camper features a comfortable sleeping area, kitchenette, and dining space, providing all the comforts of home in a compact and mobile setup. Ideal for those looking to explore the area with ease and flexibility.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center description" id="bungallows">
+        <div class="col-md-12">
+            <div class="camping-option">
+                <h3>Bungalows</h3>
+                <p class="section-content">Relax in our charming bungalows, perfect for families or couples seeking a private retreat. Each bungalow is tastefully furnished and includes a living area, kitchen, and private bathroom. Surrounded by beautiful landscapes, our bungalows offer a peaceful escape with all the comforts of home.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center description" id="bell_tents">
+        <div class="col-md-12">
+            <div class="camping-option">
+                <h3>Bell Tents</h3>
+                <p class="section-content">Enjoy a unique glamping experience in our luxurious bell tents. Spacious and elegantly furnished, these tents offer a blend of comfort and rustic charm. With cozy beds, chic decor, and access to shared facilities, our bell tents provide a stylish and comfortable way to connect with nature.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showDescription(id, imageUrl) {
+        // Hide all descriptions
+        document.querySelectorAll('.description').forEach(description => {
+            description.classList.remove('active-description');
+        });
+
+        // Show the selected description
+        document.getElementById(id).classList.add('active-description');
+
+        // Change the background image
+        document.getElementById('pictureholder').style.backgroundImage = 'url(' + imageUrl + ')';
+    }
+</script>

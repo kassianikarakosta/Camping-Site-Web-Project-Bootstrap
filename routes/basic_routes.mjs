@@ -49,6 +49,16 @@ router.get('/events', (req, res) =>
     res.render('events', { title: 'Events', customCss: '/events.css', user });
 });
 
+router.get('/places', (req, res) =>
+{
+    if (!req.session.user)
+    {
+        req.session.user = null;
+    }
+    const user = req.session.user;
+    res.render('places', { title: 'places', customCss: '/places.css', user });
+});
+
 router.get('/camping', (req, res) =>
 {
     if (!req.session.user)
