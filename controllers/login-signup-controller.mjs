@@ -4,8 +4,71 @@ import bcrypt from 'bcrypt';
 // const router = express.Router();
 const { Pool } = pkg;
 
+// export let doSignUp = async (req, res) => {
+//     // *Extract data from the request body
+//     const { username, email, password, firstname, lastname, phone, birthdate, idnumber, streetname, streetnum, city, postcode } = req.body;
+    
+//     const pool = new Pool({
+//         user: process.env.DB_USER,
+//         host: process.env.DB_HOST,
+//         database: process.env.DB_NAME,
+//         password: process.env.DB_PASSWORD,
+//         port: parseInt(process.env.DB_PORT, 10)
+//       });
+
+//     try {
+//         // *Hash the password
+//         // *Hash the password using bcrypt with a salt of 10 rounds
+//         const hashedPassword = await bcrypt.hash(password, 10);
+
+//         // *Create a MySQL connection
+//         // const connection = await mysql.createConnection(dbConfig);
+//         const client = await pool.connect();
+
+//         try {
+//             // *Insert user data into the database with hashed password
+//             // const [rows] = await connection.execute('INSERT INTO USERS (username, email, user_password, first_name, last_name, phone, birth_date, id_number, user_type, city, street_name, street_num, post_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [username, email, hashedPassword, firstname, lastname, phone, birthdate, idnumber, 'regular', city, streetname, streetnum, postcode]);
+            
+//             const user_type = 'user';
+            
+//             const result = await client.query(
+//                 'INSERT INTO USERS (first_name, last_name, username, user_password, email, phone, id_number, birth_date, user_type, city, street_name, street_num, post_code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)',
+//                 [firstname, lastname, username, hashedPassword, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode]
+//               );
+//             // const user = rows[0];
+//             if (result.rowCount > 0)
+//             {
+//                 res.render('signup', { title: 'Signup', message_success: 'Signup succesfull!', customCss: '/sign.css' });
+//             }
+
+//             // if (user > 0)
+//             // {
+//             //     res.render('signup', { title: 'Signup', message_success: 'Signup succesfull', customCss: '/sign.css' });
+//             // }
+//             // *If user registration is successful, redirect to login page
+//             res.redirect('/login');
+//         } catch (error) {
+//             // *If an error occurs while saving the user, handle it routerropriately
+//             console.error('Error saving user:', error);
+//             res.render('signup', { title: 'Signup', message_failure: 'Signup failed!', customCss: '/sign.css' });
+//             res.status(500).send('Error saving user');
+//         } finally {
+//             // *Close the database connection
+//             client.release();
+//             await pool.end();
+//         }
+//     } catch (error) {
+//         console.error('Error hashing password:', error);
+//         res.render('signup', { title: 'Signup', message_failure: 'Signup Failed! Contact administrator of the website!', customCss: '/sign.css' });
+//         res.status(500).send('Error hashing password');
+//     }
+// };
+
+// *Login form
+// *Route handler to handle form submission for login
+
 export let doSignUp = async (req, res) => {
-    // *Extract data from the request body
+    // Extract data from the request body
     const { username, email, password, firstname, lastname, phone, birthdate, idnumber, streetname, streetnum, city, postcode } = req.body;
     
     const pool = new Pool({
@@ -14,46 +77,44 @@ export let doSignUp = async (req, res) => {
         database: process.env.DB_NAME,
         password: process.env.DB_PASSWORD,
         port: parseInt(process.env.DB_PORT, 10)
-      });
+    });
 
     try {
-        // *Hash the password
-        // *Hash the password using bcrypt with a salt of 10 rounds
+        // Hash the password using bcrypt with a salt of 10 rounds
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // *Create a MySQL connection
-        // const connection = await mysql.createConnection(dbConfig);
         const client = await pool.connect();
 
         try {
-            // *Insert user data into the database with hashed password
-            // const [rows] = await connection.execute('INSERT INTO USERS (username, email, user_password, first_name, last_name, phone, birth_date, id_number, user_type, city, street_name, street_num, post_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [username, email, hashedPassword, firstname, lastname, phone, birthdate, idnumber, 'regular', city, streetname, streetnum, postcode]);
-            
-            const user_type = 'user';
-            
-            const result = await client.query(
-                'INSERT INTO USERS (first_name, last_name, username, user_password, email, phone, id_number, birth_date, user_type, city, street_name, street_num, post_code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)',
-                [firstname, lastname, username, hashedPassword, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode]
-              );
-            // const user = rows[0];
-            if (result.rowCount > 0)
-            {
-                res.render('signup', { title: 'Signup', message_success: 'Signup succesfull!', customCss: '/sign.css' });
+            // Check if user already exists
+            const checkUserQuery = 'SELECT * FROM USERS WHERE username = $1 OR email = $2 OR id_number = $3';
+            const checkUserResult = await client.query(checkUserQuery, [username, email, idnumber]);
+
+            if (checkUserResult.rows.length > 0) {
+                res.render('signup', { title: 'Signup', message_failure: 'Username or email or ID number already exists!', customCss: '/sign.css' });
+                return;
             }
 
-            // if (user > 0)
-            // {
-            //     res.render('signup', { title: 'Signup', message_success: 'Signup succesfull', customCss: '/sign.css' });
-            // }
-            // *If user registration is successful, redirect to login page
+            // Insert user data into the database with hashed password
+            const user_type = 'user';
+            const insertUserQuery = 'INSERT INTO USERS (first_name, last_name, username, user_password, email, phone, id_number, birth_date, user_type, city, street_name, street_num, post_code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)';
+            const result = await client.query(insertUserQuery, [firstname, lastname, username, hashedPassword, email, phone, idnumber, birthdate, user_type, city, streetname, streetnum, postcode]);
+
+            if (result.rowCount > 0) {
+                res.render('signup', { title: 'Signup', message_success: 'Signup successful!', customCss: '/sign.css' });
+            } else {
+                res.render('signup', { title: 'Signup', message_failure: 'Signup failed!', customCss: '/sign.css' });
+            }
+
+            // Redirect to login page if successful
             res.redirect('/login');
         } catch (error) {
-            // *If an error occurs while saving the user, handle it routerropriately
+            // Handle error while saving the user
             console.error('Error saving user:', error);
             res.render('signup', { title: 'Signup', message_failure: 'Signup failed!', customCss: '/sign.css' });
             res.status(500).send('Error saving user');
         } finally {
-            // *Close the database connection
+            // Close the database connection
             client.release();
             await pool.end();
         }
@@ -64,8 +125,6 @@ export let doSignUp = async (req, res) => {
     }
 };
 
-// *Login form
-// *Route handler to handle form submission for login
 export let doLogin = async (req, res) => {
     const { username, password } = req.body;
 
