@@ -5,8 +5,8 @@
   "main": "app.mjs",
   "type": "module",
   "scripts": {
-    "start": "node app.mjs",
-    "dev": "nodemon app.mjs"
+    "start": "node start.mjs",
+    "dev": "nodemon start.mjs"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
