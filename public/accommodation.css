@@ -1,20 +1,25 @@
 #pictureholder {
     height: 35em;
-    background-size: cover;
+    background-size: 100% 100%;;
     background-position: center;
     margin-bottom: 2em;
-    background-image: url('/img/places.png');
+    background-image: url('/img/logo.png');
 }
+
 .btn-responsive {
-    padding: 20px;
-    margin-top:1em;
-    font-size: 1.2em;
-    background-color: #dec792; /* Custom button color */
-    /* color: #ffffff; Button text color */
-    border: none;
+    background-color: #F8E1AC;
+    margin: 0.5em auto;
+    color: rgb(40, 82, 167);
+    text-decoration: none;
+    border: 0.1em solid transparent;
+    border-radius: 0.3em ;
+    border-color: #F8C794;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .btn-responsive:hover {
-    background-color: #c7b282; /* Hover color for button */
+    border-color: #F8C794;
+    background-color: #FAEBC8;
+    color: rgb(40, 82, 167);
 }
 .description {
     display: none;

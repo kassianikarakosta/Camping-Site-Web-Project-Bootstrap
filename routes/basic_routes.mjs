@@ -1,7 +1,9 @@
 import express from 'express';
 import pkg from 'pg';
 // import bcrypt from 'bcrypt';
-import { doSignUp, doLogin, updateProfile, sendEmail, showEmails } from '../controllers/login-signup-controller.mjs';
+import { doSignUp, doLogin, updateProfile } from '../controllers/login-signup-controller.mjs';
+import { sendEmail, showEmails } from '../controllers/email-controller.mjs';
+import { showReservations } from '../controllers/reservations-controller.mjs';
 const router = express.Router();
 const { Pool } = pkg;
 
@@ -49,65 +51,65 @@ router.get('/events', (req, res) =>
     res.render('events', { title: 'Events', customCss: '/events.css', user });
 });
 
-router.get('/places', (req, res) =>
+router.get('/accommodation', (req, res) =>
 {
     if (!req.session.user)
     {
         req.session.user = null;
     }
     const user = req.session.user;
-    res.render('places', { title: 'places', customCss: '/places.css', user });
+    res.render('accommodation', { title: 'Accommodation', customCss: '/accommodation.css', user });
 });
 
-router.get('/camping', (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('accomodation', { title: 'Camping', customCss: '/accomodation.css', user });
-});
+// router.get('/camping', (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('accomodation', { title: 'Camping', customCss: '/accomodation.css', user });
+// });
 
-router.get('/campers', (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('accomodation2', { title: 'Campers', customCss: '/accomodation.css', user });
-});
+// router.get('/campers', (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('accomodation2', { title: 'Campers', customCss: '/accomodation.css', user });
+// });
 
-router.get('/bungallows', (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('accomodation3', { title: 'Bungallows', customCss: '/accomodation.css', user });
-});
+// router.get('/bungallows', (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('accomodation3', { title: 'Bungallows', customCss: '/accomodation.css', user });
+// });
 
-router.get('/bell_tents', (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('accomodation4', { title: 'Bell_tents', customCss: '/accomodation.css', user });
-});
+// router.get('/bell_tents', (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('accomodation4', { title: 'Bell_tents', customCss: '/accomodation.css', user });
+// });
 
-router.get('/adminbooking',requireLoginAdmin, (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('adminbooking', { title: 'AdminBooking', customCss: '/booking.css', user });
-});
+// router.get('/adminbooking',requireLoginAdmin, (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('adminbooking', { title: 'AdminBooking', customCss: '/booking.css', user });
+// });
 
 router.get('/emails',showEmails, (req, res) =>
 {
@@ -119,6 +121,17 @@ router.get('/emails',showEmails, (req, res) =>
     
     res.render('emails', { title: 'Emails', customCss: '/emails.css', user });
 });
+
+router.get('/reservations',showReservations, (req, res) =>
+    {
+        if (!req.session.user)
+        {
+            req.session.user = null;
+        }
+        const user = req.session.user;
+        
+        res.render('reservations', { title: 'Reservations', customCss: '/reservations.css', user });
+    });
 
 router.get('/booking',requireLogin, (req, res) =>
 {
@@ -178,15 +191,15 @@ router.get('/profile',requireLogin, (req, res) =>
     res.render('profile', { title: 'Profile', customCss: '/profile.css', user });
 });
 
-router.get('/services', (req, res) =>
-{
-    if (!req.session.user)
-    {
-        req.session.user = null;
-    }
-    const user = req.session.user;
-    res.render('services', { title: 'Services', user });
-});
+// router.get('/services', (req, res) =>
+// {
+//     if (!req.session.user)
+//     {
+//         req.session.user = null;
+//     }
+//     const user = req.session.user;
+//     res.render('services', { title: 'Services', user });
+// });
 
 router.post('/signup', doSignUp);
 router.post('/profile', updateProfile);

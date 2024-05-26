@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <h2 class="section-title">Reservations</h2>
+                {{#if message_success}}
+                    <p class="success-message">{{message_success}}</p>
+                {{/if}}
+                {{#if message_failure}}
+                    <p class="error-message">{{message_failure}}</p>
+                {{/if}} 
+                {{#if reservations}}
+                <div class="list-group">
+                    {{#each reservations}}
+                    <a href="#" class="list-group-item list-group-item-action reservation-list" data-toggle="modal" data-target="#reservationModal" data-arrival="{{arrival_date}}" data-departure="{{depart_date}}" data-persons="{{persons_num}}" data-price="{{final_price}}" data-user="{{userID}}" data-place="{{placeID}}">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{place_type}} - {{category_type}}</h5>
+                            <small>$ {{final_price}}</small>
+                        </div>
+                        <p class="mb-1">{{first_name}} {{last_name}}</p>
+                        <p class="mb-1">{{email}} - {{phone}}</p>
+                        <p class="mb-1">{{depart_date}} - {{arrival_date}}</p>
+                    </a>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.email-list').click(function() {
+            $('.email-details').show();
+        });
+    });
+</script>
