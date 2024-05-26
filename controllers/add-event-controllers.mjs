@@ -40,12 +40,19 @@ export let addEvent = async (req, res) =>
     const { title, description, event_date, event_time, event_duration } = req.body;
     const image_url = path.join('event_images', title, req.file.originalname);
 
+    // const pool = new Pool({
+    //     user: process.env.DB_USER,
+    //     host: process.env.DB_HOST,
+    //     database: process.env.DB_NAME,
+    //     password: process.env.DB_PASSWORD,
+    //     port: parseInt(process.env.DB_PORT, 10)
+    // });
+
     const pool = new Pool({
-        user: process.env.DB_USER,
-        host: process.env.DB_HOST,
-        database: process.env.DB_NAME,
-        password: process.env.DB_PASSWORD,
-        port: parseInt(process.env.DB_PORT, 10)
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false
+        }
     });
 
     try
@@ -88,13 +95,20 @@ export let showEvent = async (req, res) =>
 {
     const user = req.session.user;
 
+    // const pool = new Pool({
+    //     user: process.env.DB_USER,
+    //     host: process.env.DB_HOST,
+    //     database: process.env.DB_NAME,
+    //     password: process.env.DB_PASSWORD,
+    //     port: parseInt(process.env.DB_PORT, 10)
+    //     });
+
     const pool = new Pool({
-        user: process.env.DB_USER,
-        host: process.env.DB_HOST,
-        database: process.env.DB_NAME,
-        password: process.env.DB_PASSWORD,
-        port: parseInt(process.env.DB_PORT, 10)
-        });
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+    });
 
     try
     {
