@@ -101,7 +101,7 @@ router.get('/booking',requireLogin, (req, res) =>
         req.session.user = null;
     }
     const user = req.session.user;
-    res.render('booking', { title: 'Booking', customCss: '/booking.css', user });
+    res.render('booking', { title: 'Booking', customCss: '/booking.css' , customJs: '/js/calculate.js', user });
 });
 
 router.get('/contact', (req, res) =>
